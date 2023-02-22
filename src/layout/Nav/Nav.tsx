@@ -1,15 +1,25 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import classes from "./Nav.module.css";
 
 const Nav = () => {
   return (
-    <nav>
+    <nav className={classes.nav}>
       <ul>
         <li>
-          <Link to="/login">Login</Link>
+          <NavLink
+            to="/login"
+            className={(isActive) => (isActive ? classes.active : undefined)}
+          >
+            Login
+          </NavLink>
         </li>
         <li>
-          <Link to="/register">Register</Link>
+          <NavLink
+            to="/register"
+            className={(isActive) => (isActive ? classes.active : undefined)}
+          >
+            Register
+          </NavLink>
         </li>
       </ul>
     </nav>

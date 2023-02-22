@@ -1,11 +1,11 @@
 import classes from "./Footer.module.css";
 
 const Footer = () => {
-    return (
-        <footer>
-            <p>Footer</p>
-        </footer>
-    )
-}
+  return (
+    <footer className={classes.footer}>
+      <p>Token Auth 2023 &copy;</p>
+    </footer>
+  );
+};
 
 export default Footer;
