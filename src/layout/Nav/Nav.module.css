@@ -15,6 +15,7 @@
 
 a {
     color: #f4f4f4;
+    text-transform: capitalize;
     text-decoration: none;
 }
 

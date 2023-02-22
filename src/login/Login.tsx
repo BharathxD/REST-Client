@@ -13,15 +13,15 @@ const Login = () => {
     registerInputRef.current!.value = "";
   };
   return (
-    <main>
+    <main className={classes["login-page"]}>
       <form onSubmit={submitLoginFormHandler}>
-        <div>
+        <div className={classes["form-validation"]}>
           <Input
             ref={loginInputRef}
             input={{ type: "text", placeholder: "Username" }}
           />
         </div>
-        <div>
+        <div className={classes["form-validation"]}>
           <Input
             ref={registerInputRef}
             input={{ type: "password", placeholder: "Password" }}

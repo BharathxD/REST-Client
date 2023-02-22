@@ -1,3 +1,20 @@
 .invalid {
   border-color: red;
 }
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+form {
+  padding: 25px;
+  height: max-content;
+  text-align: center;
+}
+
+.form-validation {
+  margin-bottom: 20px;
+}

@@ -1,3 +1,22 @@
-.invalid {
-  border-color: red;
+.invalid-container {
+    background-color: rgb(255, 74, 74);
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+.register-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+form {
+  padding: 25px;
+  height: max-content;
+  text-align: center;
+}
+
+.form-validation {
+  margin-bottom: 20px;
 }

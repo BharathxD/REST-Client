@@ -3,6 +3,7 @@ import Input from "../UI/Input";
 import { IRegister } from "../types/Register.types";
 import classes from "./Register.module.css";
 
+const validEmail = (value: string) => value.trim().includes("@");
 const isEmpty = (value: string) =>
   value.trim() === "" && value.trim().length === 0;
 
@@ -14,6 +15,7 @@ const Register = () => {
   const [formInputIsValid, setFormInputIsValid] = useState({
     name: true,
     email: true,
+    emailIsValid: true,
     password: true,
     confirmPassword: true,
   });
@@ -25,7 +27,7 @@ const Register = () => {
     const password = passwordRef.current!.value;
     const confirmPassword = confirmPasswordRef.current!.value;
     const nameIsValid = !isEmpty(name);
-    const emailIsValid = !isEmpty(email);
+    const emailIsValid = validEmail(email);
     const passwordIsValid = !isEmpty(password);
     const confirmPasswordIsValid = !isEmpty(confirmPassword);
     const formIsValid =
@@ -33,30 +35,30 @@ const Register = () => {
     setFormInputIsValid({
       name: nameIsValid,
       email: emailIsValid,
+      emailIsValid: emailIsValid,
       password: passwordIsValid,
       confirmPassword: confirmPasswordIsValid,
     });
     if (formIsValid) {
-      console.log("VALID");
       setData({
         name: name,
         email: email,
         password: password,
         confirmPassword: confirmPassword,
       });
+      nameInputRef.current!.value = "";
+      emailInputRef.current!.value = "";
+      passwordRef.current!.value = "";
+      confirmPasswordRef.current!.value = "";
     }
-    nameInputRef.current!.value = "";
-    emailInputRef.current!.value = "";
-    passwordRef.current!.value = "";
-    confirmPasswordRef.current!.value = "";
   };
   return (
-    <main>
+    <main className={classes["register-page"]}>
       <form onSubmit={submitRegisterFormHandler}>
-        <div>
+        <div className={classes["form-validation"]}>
           <Input
             ref={nameInputRef}
-            input={{ type: "text", placeholder: "email" }}
+            input={{ type: "text", placeholder: "Name" }}
             className={!formInputIsValid.name ? classes.invalid : ""}
           />
           {!formInputIsValid.name && (
@@ -65,19 +67,19 @@ const Register = () => {
             </div>
           )}
         </div>
-        <div>
+        <div className={classes["form-validation"]}>
           <Input
             ref={emailInputRef}
-            input={{ type: "text", placeholder: "email" }}
+            input={{ type: "text", placeholder: "Email" }}
             className={!formInputIsValid.email ? classes.invalid : ""}
           />
           {!formInputIsValid.email && (
             <div className={classes["invalid-container"]}>
-              <p>Email can't be empty</p>
+              <p>{formInputIsValid.emailIsValid ? "Email can't be empty" : "Enter a valid email"}</p>
             </div>
           )}
         </div>
-        <div>
+        <div className={classes["form-validation"]}>
           <Input
             ref={passwordRef}
             input={{ type: "password", placeholder: "Password" }}
@@ -89,7 +91,7 @@ const Register = () => {
             </div>
           )}
         </div>
-        <div>
+        <div className={classes["form-validation"]}>
           <Input
             ref={confirmPasswordRef}
             input={{ type: "password", placeholder: "Confirm Password" }}
