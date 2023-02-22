@@ -75,7 +75,11 @@ const Register = () => {
           />
           {!formInputIsValid.email && (
             <div className={classes["invalid-container"]}>
-              <p>{formInputIsValid.emailIsValid ? "Email can't be empty" : "Enter a valid email"}</p>
+              <p>
+                {formInputIsValid.emailIsValid
+                  ? "Email can't be empty"
+                  : "Enter a valid email"}
+              </p>
             </div>
           )}
         </div>

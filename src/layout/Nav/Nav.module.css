@@ -14,16 +14,16 @@
 }
 
 a {
-    color: #f4f4f4;
-    text-transform: capitalize;
-    text-decoration: none;
+  color: #f4f4f4;
+  text-transform: capitalize;
+  text-decoration: none;
 }
 
 a:hover {
-    color: #c2c2c2;
-    text-decoration: none;
+  color: #c2c2c2;
+  text-decoration: none;
 }
 
 .active:focus {
-    color: #c2c2c2;
+  color: #c2c2c2;
 }
