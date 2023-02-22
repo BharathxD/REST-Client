@@ -95,7 +95,7 @@ const Register = () => {
             input={{ type: "password", placeholder: "Confirm Password" }}
             className={!formInputIsValid.confirmPassword ? classes.invalid : ""}
           />
-          {!formInputIsValid.name && (
+          {!formInputIsValid.confirmPassword && (
             <div className={classes["invalid-container"]}>
               <p>Confirm Password can't be empty</p>
             </div>
