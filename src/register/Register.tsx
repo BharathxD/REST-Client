@@ -1,4 +1,4 @@
-import { FormEvent, SetStateAction, useRef, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import Input from "../UI/Input";
 import { IRegister } from "../types/Register.types";
 import classes from "./Register.module.css";
@@ -51,7 +51,7 @@ const Register = () => {
     confirmPasswordRef.current!.value = "";
   };
   return (
-    <section>
+    <main>
       <form onSubmit={submitRegisterFormHandler}>
         <div>
           <Input
@@ -105,7 +105,7 @@ const Register = () => {
           <button type="submit">Submit</button>
         </div>
       </form>
-    </section>
+    </main>
   );
 };
 

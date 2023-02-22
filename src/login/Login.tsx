@@ -1,3 +1,4 @@
+import classes from "./Login.module.css";
 import { FormEvent, useRef } from "react";
 import Input from "../UI/Input";
 
@@ -12,23 +13,25 @@ const Login = () => {
     registerInputRef.current!.value = "";
   };
   return (
-    <form onSubmit={submitLoginFormHandler}>
-      <div>
-        <Input
-          ref={loginInputRef}
-          input={{ type: "text", placeholder: "Username" }}
-        />
-      </div>
-      <div>
-        <Input
-          ref={registerInputRef}
-          input={{ type: "password", placeholder: "Password" }}
-        />
-      </div>
-      <div>
-        <button type="submit">Submit</button>
-      </div>
-    </form>
+    <main>
+      <form onSubmit={submitLoginFormHandler}>
+        <div>
+          <Input
+            ref={loginInputRef}
+            input={{ type: "text", placeholder: "Username" }}
+          />
+        </div>
+        <div>
+          <Input
+            ref={registerInputRef}
+            input={{ type: "password", placeholder: "Password" }}
+          />
+        </div>
+        <div>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </main>
   );
 };
 
