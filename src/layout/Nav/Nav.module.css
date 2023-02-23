@@ -9,11 +9,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 1rem;
   flex-direction: row;
   gap: 30px;
 }
 
 a {
+  font-weight: 500;
   color: #f4f4f4;
   text-transform: capitalize;
   text-decoration: none;

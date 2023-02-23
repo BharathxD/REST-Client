@@ -16,11 +16,13 @@
 }
 
 form {
-  padding: 25px;
   height: max-content;
   text-align: center;
+  border: 1px solid #adadad;
+  background-color: #adadad23;
+  border-radius: 10px;
 }
 
 .form-validation {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
