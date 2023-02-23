@@ -1,11 +1,14 @@
-import { FormEvent, useRef, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import Input from "../UI/Input";
 import { IRegister } from "../types/Register.types";
 import classes from "./Register.module.css";
+import useHTTP from "../hooks/useHTTP";
 
 const validEmail = (value: string) => value.trim().includes("@");
 const isEmpty = (value: string) =>
   value.trim() === "" && value.trim().length === 0;
+
+type IData = IRegister | Omit<IRegister, "name" & "confirmPassword">;
 
 const Register = () => {
   const nameInputRef = useRef<HTMLInputElement | null>(null);
@@ -19,8 +22,17 @@ const Register = () => {
     password: true,
     confirmPassword: true,
   });
-  const [data, setData] = useState<IRegister | null>(null);
-  const submitRegisterFormHandler = (e: FormEvent) => {
+  const [data, setData] = useState<IData>();
+  const response = useHTTP({
+    url: "http://127.0.0.1:3000/api/users",
+    method: "POST",
+    body: data,
+  });
+  useEffect(() => {
+    if (data !== undefined) response.fetchHandler();
+  }, [data]);
+
+  const submitRegisterFormHandler = async (e: FormEvent) => {
     e.preventDefault();
     const name = nameInputRef.current!.value;
     const email = emailInputRef.current!.value;
@@ -39,13 +51,18 @@ const Register = () => {
       password: passwordIsValid,
       confirmPassword: confirmPasswordIsValid,
     });
+    if (!formIsValid) {
+      console.log("INVALID");
+      return;
+    }
     if (formIsValid) {
-      setData({
-        name: name,
-        email: email,
-        password: password,
-        confirmPassword: confirmPassword,
-      });
+      const data = {
+        "name": name,
+        "email": email,
+        "password": password,
+        "passwordConfirmation": confirmPassword,
+      };
+      setData(data);
       nameInputRef.current!.value = "";
       emailInputRef.current!.value = "";
       passwordRef.current!.value = "";
